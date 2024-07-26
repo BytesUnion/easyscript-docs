@@ -1,0 +1,279 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.App {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: #282c34;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.easyscript-text {
+    color: #f5ba13;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.github-icon {
+    margin-left: auto;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.github-logo {
+    width: 24px;
+    height: 24px;
+}
+
+.language-selector {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-button {
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+.dropdown-button img {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #282c34;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #22252d;
+}
+
+.dropdown-item img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.mobile-menu-button {
+    display: none;
+    background: none;
+    border: none;
+    color: #f5ba13;
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+
+.sidebar {
+    background-color: #1e1e1e;
+    width: 250px;
+    padding: 20px;
+    border-right: 1px solid #444;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    position: sticky;
+    top: 60px;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background-color: #eee;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.sidebar > ul {
+    padding-left: 0;
+}
+
+.sidebar details > summary {
+    cursor: pointer;
+    color: #f5ba13;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar details > summary:hover {
+    background-color: #2a2a2a;
+}
+
+.sidebar ul li a {
+    color: #f5ba13;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    background-color: #333;
+}
+
+.sidebar ul li a.active-link {
+    background-color: #333;
+    font-weight: bold;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    height: calc(100vh - 60px);
+}
+
+
+@media (max-width: 768px) {
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
+    .header-content {
+        height: auto;
+    }
+
+    .easyscript-text {
+        flex-grow: 1;
+    }
+
+    .github-icon,
+    .language-selector,
+    .mobile-menu-button {
+        margin-left: 10px;
+    }
+
+    .github-icon {
+        order: 1;
+    }
+
+    .language-selector {
+        order: 2;
+    }
+
+    .mobile-menu-button {
+        order: 3;
+        display: block;
+    }
+
+    .header-links {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: #282c34;
+        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-links.mobile-open {
+        display: flex;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: -250px;
+        top: 60px;
+        bottom: 0;
+        width: 250px;
+        overflow-y: auto;
+        transition: left 0.3s ease;
+        z-index: 1000;
+        height: calc(100% - 60px);
+    }
+
+    .sidebar.mobile-open {
+        left: 0;
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .content {
+        padding: 10px;
+        width: 100%;
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    .no-scroll {
+        overflow: hidden;
+    }
+}
